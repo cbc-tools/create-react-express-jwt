@@ -11,7 +11,7 @@ An article on how the server is setup with JWT can be found [here](https://hptec
 The front end has been setup to use JWT as a way of authenticating users and routes. To understand it's structure better please refer to the following article [here](https://hptechblogs.com/using-json-web-token-react/)
 
 Please feel free to modify this code in anyway you see fit for your project. It is a boilerplate setup that tries to make sure you can get something up and running without having to worry about setting up user authentication from scratch.
-I highly suggest you read the articles before jumping in so you can have an better understanding of how everything works in the code. 
+I highly suggest you read the articles before jumping in so you can have an better understanding of how everything works in the code.
 
 Server-side article and using JWT: https://hptechblogs.com/using-json-web-token-for-authentication/
 
