@@ -1,17 +1,11 @@
 import React, {Component} from 'react';
 import AuthService from './../components/AuthService';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 class Login extends Component {
   constructor() {
     super();
     this.Auth = new AuthService();
-  }
-
-  componentWillMount() {
-    if (this.Auth.loggedIn()) {
-      this.props.history.replace('/');
-    }
   }
 
   handleFormSubmit = event => {
@@ -36,6 +30,9 @@ class Login extends Component {
   };
 
   render() {
+    if (this.Auth.loggedIn()) {
+      return <Redirect to="/" />
+    }
     return (
       <div className="container">
         <h1>Login</h1>
@@ -47,6 +44,7 @@ class Login extends Component {
                    name="email"
                    type="email"
                    id="email"
+                   autoComplete="email"
                    onChange={this.handleChange}/>
           </div>
           <div className="form-group">
@@ -56,6 +54,7 @@ class Login extends Component {
                    name="password"
                    type="password"
                    id="pwd"
+                   autoComplete="current-password"
                    onChange={this.handleChange}/>
           </div>
           <button type="submit" className="btn btn-primary">Submit</button>

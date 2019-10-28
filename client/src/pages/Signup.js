@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import AuthService from './../components/AuthService';
 import API from './../utils/API';
 
@@ -7,12 +7,6 @@ class Signup extends Component {
   constructor() {
     super();
     this.Auth = new AuthService();
-  }
-
-  componentWillMount() {
-    if (this.Auth.loggedIn()) {
-      this.props.history.replace('/');
-    }
   }
 
   handleFormSubmit = event => {
@@ -34,6 +28,10 @@ class Signup extends Component {
   };
 
   render() {
+    // go to home page after signup
+    if (this.Auth.loggedIn()) {
+      return <Redirect to="/" />
+    }
     return (
       <div className="container">
 
@@ -46,6 +44,7 @@ class Signup extends Component {
                    name="username"
                    type="text"
                    id="username"
+                   autoComplete="username"
                    onChange={this.handleChange}/>
           </div>
           <div className="form-group">
@@ -55,6 +54,7 @@ class Signup extends Component {
                    name="email"
                    type="email"
                    id="email"
+                   autoComplete="email"
                    onChange={this.handleChange}/>
           </div>
           <div className="form-group">
@@ -64,6 +64,7 @@ class Signup extends Component {
                    name="password"
                    type="password"
                    id="pwd"
+                   autoComplete="new-password"
                    onChange={this.handleChange}/>
           </div>
           <button type="submit" className="btn btn-primary">Submit</button>
